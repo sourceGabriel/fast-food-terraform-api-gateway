@@ -69,14 +69,14 @@ resource "aws_iam_role_policy_attachment" "lambda_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-resource "aws_lambda_function" "login" {
-  function_name = "LoginFunction"
+resource "aws_lambda_function" "hello" {
+  function_name = "HelloFunction"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id
   s3_key    = aws_s3_object.lambda_handler.key
 
   runtime = "nodejs18.x"
-  handler = "login.handler"
+  handler = "hello.handler"
 
   source_code_hash = data.archive_file.handler.output_base64sha256
   role = aws_iam_role.lambda_exec.arn

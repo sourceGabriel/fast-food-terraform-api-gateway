@@ -41,7 +41,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git fetch origin main
+        if git diff --quiet origin/main; then
+          echo "No changes detected"
+          echo "::set-output name=changes::false"
+        else
+          echo "Changes detected"
+          echo "::set-output name=changes::true"
+        fi
+
     - name: Create Pull Request
+      if: steps.check_changes.outputs.changes == 'true'
       uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -50,4 +63,4 @@ jobs:
         title: 'Update Terraform configuration'
         body: |
           This PR updates the Terraform configuration.
-        base: main
+        base: origin/main

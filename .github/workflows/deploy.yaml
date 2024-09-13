@@ -22,7 +22,7 @@ jobs:
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
 
     - name: Install Terraform
-      uses: hashicorp/setup-terraform@v2 
+      uses: hashicorp/setup-terraform@v2
 
     - name: Terraform Init
       run: terraform init

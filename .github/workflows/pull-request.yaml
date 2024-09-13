@@ -24,6 +24,9 @@ jobs:
     - name: Install Terraform
       uses: hashicorp/setup-terraform@v1
 
+    - name: Terraform Init
+      run: terraform init
+
     - name: Validate Terraform
       run: terraform validate
 

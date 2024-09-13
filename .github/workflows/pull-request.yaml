@@ -41,26 +41,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Check for changes
-      id: check_changes
-      run: |
-        git fetch origin main
-        if git diff --quiet origin/main; then
-          echo "No changes detected"
-          echo "::set-output name=changes::false"
-        else
-          echo "Changes detected"
-          echo "::set-output name=changes::true"
-        fi
-
-    - name: Create Pull Request
-      if: steps.check_changes.outputs.changes == 'true'
-      uses: peter-evans/create-pull-request@v3
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: Update Terraform configuration
-        branch: update-terraform
-        title: 'Update Terraform configuration'
-        body: |
-          This PR updates the Terraform configuration.
-        base: origin/main
+        destination_branch: "main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_label: "PR Automatica - Alteração de Infra"
+        pr_title: "PR Automatica - Alteração de Infra."

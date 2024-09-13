@@ -3,7 +3,11 @@ name: Pull Request
 on:
   push:
     branches:
-      - */*
+      - gabrielmarcelino165/*
+      - fontegabriel/*
+      - alvesoliveirasolucoes/*
+      - rafaelmesquitamoura/*
+      - tgetnerski/*
 
 jobs:
   validate:

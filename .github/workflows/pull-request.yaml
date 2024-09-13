@@ -3,7 +3,11 @@ name: Pull Request
 on:
   push:
     branches:
-      - '**'
+      - gabrielmarcelino165/*
+      - fontegabriel/*
+      - alvesoliveirasolucoes/*
+      - rafaelmesquitamoura/*
+      - tgetnerski/*
 
 jobs:
   validate:
@@ -46,5 +50,5 @@ jobs:
       with:
         destination_branch: "main"
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_label: "Alteração de Infra"
-        pr_title: "PR Automatica :rocket:"
+        pr_label: "PR Automatica :rocket:"
+        pr_title: "Alteração de Infra"

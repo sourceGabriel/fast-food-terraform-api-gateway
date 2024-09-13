@@ -46,5 +46,5 @@ jobs:
       with:
         destination_branch: "main"
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_label: "Alteração de Infra"
-        pr_title: "PR Automatica :rocket:"
+        pr_label: "PR Automatica :rocket:"
+        pr_title: "Alteração de Infra"
